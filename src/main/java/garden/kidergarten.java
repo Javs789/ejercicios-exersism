@@ -8,6 +8,14 @@ import java.util.Scanner;
 //Solution by: Javs789
 //
 public class kidergarten {
+    private static String[] children = {
+            "Alice", "Bob", "Charlie", "David", "Eve", "Fred",
+            "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"
+    };
+
+    private static String[] childrenPlantsFirstRow = new String[24];
+    private static String[] childrenPlantsSecondRow = new String[24];
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("System initializing...");
@@ -50,29 +58,43 @@ public class kidergarten {
     }
 
     private static void listChildren(){
-        System.out.println("List of children: ");
-        System.out.println("Alice");
-        System.out.println("Bob");
-        System.out.println("Charlie");
-        System.out.println("David");
-        System.out.println("Eve");
-        System.out.println("Fred");
-        System.out.println("Ginny");
-        System.out.println("Harriet");
-        System.out.println("Ileana");
-        System.out.println("Joseph");
-        System.out.println("Kincaid");
-        System.out.println("Larry");
+        for (int i = 0; i < children.length; i++) {
+            System.out.println(children[i]);
+        }
     }
     private static void setFirstRow(){
         Scanner input = new Scanner(System.in);
-        String[] childrenPlants = new String[12];
-        for (int i = 0; i < childrenPlants.length; i++) {
-            childrenPlants[i] = input.next();
+        System.out.print("Enter the plants in the first row: ");
+        for (int i = 0; i < childrenPlantsFirstRow.length; i++) {
+            childrenPlantsFirstRow[i] = input.next();
         }
     }
-    private static void setSecondRow(){}
-    private static void askStudentPlants(){}
+    private static void setSecondRow(){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the plants in the second row: ");
+        for (int i = 0; i < childrenPlantsSecondRow.length; i++) {
+            childrenPlantsSecondRow[i] = input.next();
+        }
+    }
+    private static void askStudentPlants(){
+        Scanner input = new Scanner(System.in);
+        int studentNameIndex = 0;
+        System.out.print("Enter a student name: ");
+        String studentName = input.next().toLowerCase();
+        if (children.equals(studentName)) {
+            for (int i = 0; i < children.length; i++) {
+                if (children[i].equals(studentName)) {
+                    studentNameIndex = i;
+                    break;
+                }
+            }
+            System.out.println(
+                    studentName + "´s plants in the first row: " + childrenPlantsFirstRow[studentNameIndex]
+            );
+        } else {
+            System.out.println("Enter a valid student name");
+        }
+    }
     private static void printClassroomMap(){
         System.out.println(" [window] [window] [window] ");
         System.out.println("  . . . . . . . . . . . . ");
